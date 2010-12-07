@@ -16,6 +16,7 @@ import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.zest.core.viewers.GraphViewer;
 import org.eclipse.zest.core.viewers.IGraphEntityContentProvider;
 import org.eclipse.zest.layouts.LayoutStyles;
+import org.eclipse.zest.layouts.algorithms.RadialLayoutAlgorithm;
 import org.eclipse.zest.layouts.algorithms.TreeLayoutAlgorithm;
 
 import eu.evesuite.eve.bean.TechTreeNode;
@@ -142,7 +143,9 @@ public class InvTypeEditorPageTechTree extends FormPage {
 		viewer = new GraphViewer(form.getBody(), SWT.BORDER);
 		viewer.setContentProvider(new ViewContentProvider());
 		viewer.setLabelProvider(new ViewLabelProvider());
-		viewer.setLayoutAlgorithm(new TreeLayoutAlgorithm(
+		viewer.getGraphControl().setPreferredSize(5000, 5000);
+		viewer.applyLayout();
+		viewer.setLayoutAlgorithm(new RadialLayoutAlgorithm(
 				LayoutStyles.NO_LAYOUT_NODE_RESIZING), true);
 
 		viewer.setInput(node);
