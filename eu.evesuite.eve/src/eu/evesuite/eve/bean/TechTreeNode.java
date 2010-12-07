@@ -17,6 +17,16 @@ public class TechTreeNode {
 	protected double amount;
 	
 	protected InvType invType;
+	
+	protected TechTreeNode parent;
+
+	public TechTreeNode getParent() {
+		return parent;
+	}
+
+	public void setParent(TechTreeNode parent) {
+		this.parent = parent;
+	}
 
 	protected Collection<TechTreeNode> children;
 	
@@ -26,6 +36,7 @@ public class TechTreeNode {
 		this.isRequirement = false;
 		this.isBluePrint = false;
 		this.applyME = false;
+		this.parent = null;
 	}
 	
 	public boolean isApplyME() {

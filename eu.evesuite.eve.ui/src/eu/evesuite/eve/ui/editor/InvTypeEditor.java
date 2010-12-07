@@ -13,9 +13,7 @@ import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 
 import eu.evesuite.eve.jpa.InvType;
-import eu.evesuite.eve.ui.editor.page.InvTypeEditorPageInvention;
-import eu.evesuite.eve.ui.editor.page.InvTypeEditorPageMaterial;
-import eu.evesuite.eve.ui.editor.page.InvTypeEditorPageOverview;
+import eu.evesuite.eve.ui.editor.page.InvTypeEditorPageTechTree;
 
 public class InvTypeEditor extends SharedHeaderFormEditor implements PropertyChangeListener {
 
@@ -69,9 +67,10 @@ public class InvTypeEditor extends SharedHeaderFormEditor implements PropertyCha
 	protected void addPages() {
 		
 		try {
-			addPage(new InvTypeEditorPageMaterial(this));
-			addPage(new InvTypeEditorPageOverview(this));
-			addPage(new InvTypeEditorPageInvention(this, "invention", "Invention"));
+			addPage(new InvTypeEditorPageTechTree(this));
+			//addPage(new InvTypeEditorPageMaterial(this));
+			//addPage(new InvTypeEditorPageOverview(this));
+			//addPage(new InvTypeEditorPageInvention(this, "invention", "Invention"));
 		} catch (PartInitException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

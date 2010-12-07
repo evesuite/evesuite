@@ -62,7 +62,6 @@ public class InvTypeEditorPageMaterial extends FormPage {
 					blueprint = entity.getInvBlueprintType();
 				}
 				
-				service.printTree(blueprint, "", -4.0);
 			}
 			
 			return new Object[0];

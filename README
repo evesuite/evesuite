@@ -2,8 +2,11 @@ EVE Online Suite
 
  - written in JAVA
  - based on Eclipse
+ 
 
 Installting development environment:
+ 
+  Install the Eclipse SDK
  
   Help -> Install New Software -> Work with: -- All Available Sites --
       
@@ -15,6 +18,10 @@ Installting development environment:
       EclipseRT Target Platform Components
           
           [x] EclipseLink Target Components
+          
+      Modeling
+      
+      	  [x] Graphical Editing Framework Zest Visualization Toolkit SDK
   
   Visit: http://m2eclipse.sonatype.org/installing-m2eclipse.html
       
