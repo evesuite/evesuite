@@ -39,6 +39,10 @@
 	<modules>
 		<module>eu.evesuite.commons</module>
 		<module>eu.evesuite.commons.feature</module>
+		<module>eu.evesuite.client.project</module>
+		<module>eu.evesuite.client</module>
+		<module>eu.evesuite.client.feature</module>
+		<module>eu.evesuite.client.target</module>
 	</modules>
 
 	<scm>
@@ -47,18 +51,37 @@
 		<url>http://github.com/evesuite/evesuite</url>
 	</scm>
 	
-	<repositories>
-		<repository>
-			<id>helios</id>
-			<layout>p2</layout>
-			<url>http://download.eclipse.org/releases/helios</url>
-		</repository>
-	</repositories>
-	
 	<build>
 		<plugins>		
-		
-			
+			<plugin>
+				<groupId>${tycho-groupid}</groupId>
+				<artifactId>target-platform-configuration</artifactId>
+				<version>${tycho-version}</version>
+				<configuration>
+					<resolver>p2</resolver>
+					<target>
+						<artifact>
+							<groupId>eu.evesuite</groupId>
+							<artifactId>eu.evesuite.client.target</artifactId>
+							<version>0.0.1-SNAPSHOT</version>
+							<classifier>helios</classifier>
+						</artifact>
+					</target>
+					<ignoreTychoRepositories>true</ignoreTychoRepositories>
+					<environments>
+						<environment>
+							<os>linux</os>
+							<ws>gtk</ws>
+							<arch>x86_64</arch>
+						</environment>
+						<environment>
+							<os>win32</os>
+							<ws>win32</ws>
+							<arch>x86</arch>
+						</environment>
+					</environments>
+				</configuration>
+			</plugin>			
 			<plugin>
 				<groupId>${tycho-groupid}</groupId>
 				<artifactId>tycho-maven-plugin</artifactId>

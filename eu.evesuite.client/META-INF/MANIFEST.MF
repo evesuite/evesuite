@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: EVE Suite Client
+Bundle-SymbolicName: eu.evesuite.client; singleton:=true
+Bundle-Version: 0.0.1.qualifier
+Bundle-Activator: eu.evesuite.client.Activator
+Bundle-Vendor: EVE Suite <evesuite@googlemail.com>
+Require-Bundle: org.eclipse.ui;visibility:=reexport,
+ org.eclipse.core.runtime;visibility:=reexport
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-ActivationPolicy: lazy

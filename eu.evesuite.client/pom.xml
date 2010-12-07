@@ -5,17 +5,17 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>eu.evesuite</groupId>
-	<artifactId>eu.evesuite.commons</artifactId>
+	<artifactId>eu.evesuite.client</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>eclipse-plugin</packaging>
-	<name>EVE Suite Commons</name>
+	<name>EVE Suite Client</name>
 
 	<parent>
 		<groupId>eu.evesuite</groupId>
 		<artifactId>project</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-
+	
 	<build>
 		<plugins>
 			<plugin>
@@ -29,5 +29,5 @@
 			</plugin>
 		</plugins>
 	</build>
-
+	
 </project>
