@@ -45,6 +45,8 @@
 		<module>eu.evesuite.client.target</module>
 		<module>eu.evesuite.eve</module>
 		<module>eu.evesuite.eve.feature</module>
+		<module>eu.evesuite.eve.ui</module>
+		<module>eu.evesuite.eve.ui.feature</module>
 	</modules>
 
 	<scm>
