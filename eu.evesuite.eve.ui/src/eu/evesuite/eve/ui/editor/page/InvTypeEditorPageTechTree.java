@@ -3,46 +3,25 @@ package eu.evesuite.eve.ui.editor.page;
 import java.util.ArrayList;
 import java.util.Collection;
 
-import javax.swing.tree.TreeNode;
-
 import org.eclipse.jface.viewers.ArrayContentProvider;
-import org.eclipse.jface.viewers.IStructuredContentProvider;
-import org.eclipse.jface.viewers.ITableLabelProvider;
 import org.eclipse.jface.viewers.LabelProvider;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.layout.FillLayout;
-import org.eclipse.swt.layout.GridData;
-import org.eclipse.swt.layout.GridLayout;
-import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.Display;
-import org.eclipse.swt.widgets.Event;
-import org.eclipse.swt.widgets.Listener;
-import org.eclipse.ui.ISharedImages;
-import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.forms.IManagedForm;
 import org.eclipse.ui.forms.editor.FormEditor;
 import org.eclipse.ui.forms.editor.FormPage;
-import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
-import org.eclipse.ui.forms.widgets.Section;
 import org.eclipse.zest.core.viewers.GraphViewer;
-import org.eclipse.zest.core.viewers.IGraphContentProvider;
 import org.eclipse.zest.core.viewers.IGraphEntityContentProvider;
-import org.eclipse.zest.core.widgets.Graph;
-import org.eclipse.zest.core.widgets.GraphConnection;
-import org.eclipse.zest.core.widgets.GraphNode;
-import org.eclipse.zest.core.widgets.ZestStyles;
 import org.eclipse.zest.layouts.LayoutStyles;
-import org.eclipse.zest.layouts.algorithms.SpringLayoutAlgorithm;
 import org.eclipse.zest.layouts.algorithms.TreeLayoutAlgorithm;
 
 import eu.evesuite.eve.bean.TechTreeNode;
 import eu.evesuite.eve.jpa.EVEModelServiceImpl;
 import eu.evesuite.eve.jpa.InvBlueprintType;
 import eu.evesuite.eve.jpa.InvType;
-import eu.evesuite.eve.jpa.InvTypeMaterial;
 import eu.evesuite.eve.ui.Activator;
 import eu.evesuite.eve.ui.editor.InvTypeEditorInput;
 
@@ -165,45 +144,8 @@ public class InvTypeEditorPageTechTree extends FormPage {
 		viewer.setLabelProvider(new ViewLabelProvider());
 		viewer.setLayoutAlgorithm(new TreeLayoutAlgorithm(
 				LayoutStyles.NO_LAYOUT_NODE_RESIZING), true);
-		viewer.setInput(node);
-		
-		/*
-		// Graph will hold all other objects
-		Graph graph = new Graph(form.getBody(), SWT.NONE);
-		// Now a few nodes
-		GraphNode node1 = new GraphNode(graph, SWT.NONE, "Jim");
-		GraphNode node2 = new GraphNode(graph, SWT.NONE, "Jack");
-		GraphNode node3 = new GraphNode(graph, SWT.NONE, "Joe");
-		GraphNode node4 = new GraphNode(graph, SWT.NONE, "Bill");
-		// Lets have a directed connection
-		new GraphConnection(graph, ZestStyles.CONNECTIONS_DIRECTED, node1,
-				node2);
-		// Lets have a dotted graph connection
-		new GraphConnection(graph, ZestStyles.CONNECTIONS_DOT, node2, node3);
-		// Standard connection
-		new GraphConnection(graph, SWT.NONE, node3, node1);
-		// Change line color and line width
-		GraphConnection graphConnection = new GraphConnection(graph, SWT.NONE,
-				node1, node4);
-		graphConnection.changeLineColor(form.getBody().getDisplay().getSystemColor(
-				SWT.COLOR_GREEN));
-		// Also set a text
-		graphConnection.setText("This is a text");
-		graphConnection.setHighlightColor(form.getBody().getDisplay().getSystemColor(
-				SWT.COLOR_RED));
-		graphConnection.setLineWidth(3);
-		graphConnection.addListener(SWT.SELECTED, new Listener() {
-			
-			@Override
-			public void handleEvent(Event event) {
-				System.out.println("Selected");
-			}
 
-		});
-		
-		graph.setLayoutAlgorithm(new TreeLayoutAlgorithm(
-				LayoutStyles.NO_LAYOUT_NODE_RESIZING), true);
-				*/
+		viewer.setInput(node);
 	}
 
 }
