@@ -120,6 +120,12 @@
             id="eu.evesuite.eve.ui.views.MarketView"
             name="Market View">
       </view>
+      <view
+            category="eu.evesuite.eve.ui"
+            class="eu.evesuite.eve.ui.views.BluePrintView"
+            id="eu.evesuite.eve.ui.views.BluePrintView"
+            name="BluePrint View">
+      </view>
    </extension>
    <extension
          point="org.eclipse.core.runtime.adapters">
@@ -152,6 +158,13 @@
       <factory
             adaptableType="eu.evesuite.eve.ui.providers.MarketContentProvider"
             class="eu.evesuite.eve.ui.adapters.MarketContentProviderAdapterFactory">
+         <adapter
+               type="org.eclipse.ui.progress.IDeferredWorkbenchAdapter">
+         </adapter>
+      </factory>
+      <factory
+            adaptableType="eu.evesuite.eve.ui.providers.BluePrintContentProvider"
+            class="eu.evesuite.eve.ui.adapters.BluePrintContentProviderAdapterFactory">
          <adapter
                type="org.eclipse.ui.progress.IDeferredWorkbenchAdapter">
          </adapter>

@@ -10,6 +10,7 @@ import org.eclipse.ui.handlers.HandlerUtil;
 import org.eclipse.ui.statushandlers.StatusManager;
 
 import eu.evesuite.eve.ui.Activator;
+import eu.evesuite.eve.ui.views.BluePrintView;
 import eu.evesuite.eve.ui.views.MarketView;
 
 public class MarketViewHandler extends AbstractHandler {
@@ -19,7 +20,7 @@ public class MarketViewHandler extends AbstractHandler {
 		IWorkbenchWindow window = HandlerUtil.getActiveWorkbenchWindowChecked(event);
 
 		try {
-			window.getActivePage().showView(MarketView.ID);
+			window.getActivePage().showView(BluePrintView.ID);
 		} catch (Exception e) {
 			IStatus status = new Status(Status.WARNING, Activator.PLUGIN_ID, e.getMessage(), e);
 			StatusManager.getManager().handle(status, StatusManager.LOG | StatusManager.BLOCK);			

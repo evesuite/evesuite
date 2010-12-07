@@ -9,15 +9,19 @@ import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.layout.FillLayout;
+import org.eclipse.ui.IActionBars;
 import org.eclipse.ui.forms.IManagedForm;
 import org.eclipse.ui.forms.editor.FormEditor;
 import org.eclipse.ui.forms.editor.FormPage;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
+import org.eclipse.zest.core.viewers.AbstractZoomableViewer;
 import org.eclipse.zest.core.viewers.GraphViewer;
 import org.eclipse.zest.core.viewers.IGraphEntityContentProvider;
+import org.eclipse.zest.core.viewers.IZoomableWorkbenchPart;
+import org.eclipse.zest.core.viewers.ZoomContributionViewItem;
 import org.eclipse.zest.layouts.LayoutStyles;
+import org.eclipse.zest.layouts.algorithms.GridLayoutAlgorithm;
 import org.eclipse.zest.layouts.algorithms.RadialLayoutAlgorithm;
-import org.eclipse.zest.layouts.algorithms.TreeLayoutAlgorithm;
 
 import eu.evesuite.eve.bean.TechTreeNode;
 import eu.evesuite.eve.jpa.EVEModelServiceImpl;
@@ -26,7 +30,7 @@ import eu.evesuite.eve.jpa.InvType;
 import eu.evesuite.eve.ui.Activator;
 import eu.evesuite.eve.ui.editor.InvTypeEditorInput;
 
-public class InvTypeEditorPageTechTree extends FormPage {
+public class InvTypeEditorPageTechTree extends FormPage implements IZoomableWorkbenchPart {
 
 	private GraphViewer viewer;
 	
@@ -143,12 +147,20 @@ public class InvTypeEditorPageTechTree extends FormPage {
 		viewer = new GraphViewer(form.getBody(), SWT.BORDER);
 		viewer.setContentProvider(new ViewContentProvider());
 		viewer.setLabelProvider(new ViewLabelProvider());
-		viewer.getGraphControl().setPreferredSize(5000, 5000);
+		viewer.getGraphControl().setPreferredSize(2000, 2000);
 		viewer.applyLayout();
 		viewer.setLayoutAlgorithm(new RadialLayoutAlgorithm(
 				LayoutStyles.NO_LAYOUT_NODE_RESIZING), true);
 
 		viewer.setInput(node);
+		
+		ZoomContributionViewItem toolbarZoomContributionViewItem = new ZoomContributionViewItem(this);
+		//IActionBars bars = managedForm.getgetViewSite().getActionBars();
+		//bars.getMenuManager().add(toolbarZoomContributionViewItem);
 	}
-
+	
+	@Override
+	public AbstractZoomableViewer getZoomableViewer() {
+		return viewer;
+	}
 }

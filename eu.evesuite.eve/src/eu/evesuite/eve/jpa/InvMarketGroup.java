@@ -7,7 +7,10 @@ import javax.persistence.*;
 
 @Entity
 @Table(name="invMarketGroups")
-@NamedQuery(name="InvMarketGroup.Parent", query = "SELECT a FROM InvMarketGroup a WHERE a.parentGroupID IS NULL")
+@NamedQueries({
+	@NamedQuery(name="InvMarketGroup.Parent", query = "SELECT a FROM InvMarketGroup a WHERE a.parentGroupID IS NULL"),
+	@NamedQuery(name="InvMarketGroup.BluePrint", query = "SELECT a FROM InvMarketGroup a WHERE a.parentGroupID=2")
+})
 public class InvMarketGroup implements Serializable {
 
 	private static final long serialVersionUID = 4938578595565203344L;
