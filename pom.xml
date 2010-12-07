@@ -47,6 +47,7 @@
 		<module>eu.evesuite.eve.feature</module>
 		<module>eu.evesuite.eve.ui</module>
 		<module>eu.evesuite.eve.ui.feature</module>
+		<module>eu.evesuite.update</module>
 	</modules>
 
 	<scm>

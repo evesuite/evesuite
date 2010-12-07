@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <feature url="features/eu.evesuite.client.feature_0.0.1.qualifier.jar" id="eu.evesuite.client.feature" version="0.0.1.qualifier">
+      <category name="eu.evesuite"/>
+   </feature>
+   <feature url="features/eu.evesuite.commons.feature_0.0.1.qualifier.jar" id="eu.evesuite.commons.feature" version="0.0.1.qualifier">
+      <category name="eu.evesuite"/>
+   </feature>
+   <feature url="features/eu.evesuite.eve.feature_0.0.1.qualifier.jar" id="eu.evesuite.eve.feature" version="0.0.1.qualifier">
+      <category name="eu.evesuite"/>
+   </feature>
+   <feature url="features/eu.evesuite.eve.ui.feature_0.0.1.qualifier.jar" id="eu.evesuite.eve.ui.feature" version="0.0.1.qualifier">
+      <category name="eu.evesuite"/>
+   </feature>
+   <category-def name="eu.evesuite" label="EVE Suite">
+      <description>
+         EVE Suite
+      </description>
+   </category-def>
+</site>
