@@ -22,7 +22,7 @@ public class PlanetSchematicsTypeMap implements Serializable {
 	@Id
 	private int typeID;
 
-	private byte isInput;
+	private boolean isInput;
 
 	private short quantity;
 
@@ -53,11 +53,11 @@ public class PlanetSchematicsTypeMap implements Serializable {
 		this.typeID = typeID;
 	}
     
-	public byte getIsInput() {
+	public boolean getIsInput() {
 		return this.isInput;
 	}
 
-	public void setIsInput(byte isInput) {
+	public void setIsInput(boolean isInput) {
 		this.isInput = isInput;
 	}
 

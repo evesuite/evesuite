@@ -45,14 +45,14 @@ public class EVEModelServiceImpl extends AbstractModelManager implements
 		
 		for (PlanetSchematicsTypeMap planetSchematicsTypeMap : collection) {
 			
-			if (planetSchematicsTypeMap.getIsInput() == 0) {
+			if (!planetSchematicsTypeMap.getIsInput()) {
 				System.out.println(indent + schematic.getSchematicName() +  " - " + planetSchematicsTypeMap.getQuantity());				
 			}
 		}
 
 		for (PlanetSchematicsTypeMap planetSchematicsTypeMap : collection) {
 			
-			if (planetSchematicsTypeMap.getIsInput() == 1) {
+			if (planetSchematicsTypeMap.getIsInput()) {
 				
 				PlanetSchematicsTypeMap map = planetSchematicsTypeMap.getInvType().getPlanetSchematicsTypeMap();
 				

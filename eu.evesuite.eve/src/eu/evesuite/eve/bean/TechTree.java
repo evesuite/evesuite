@@ -111,7 +111,7 @@ public class TechTree {
 		
 		for (PlanetSchematicsTypeMap planetSchematicsTypeMap : collection2) {
 			
-			if (planetSchematicsTypeMap.getIsInput() == 1) {
+			if (planetSchematicsTypeMap.getIsInput()) {
 				
 				PlanetSchematicsTypeMap map = planetSchematicsTypeMap.getInvType().getPlanetSchematicsTypeMap();
 				
