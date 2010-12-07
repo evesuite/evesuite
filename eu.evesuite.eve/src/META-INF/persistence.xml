@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+	
+	<persistence-unit name="eu.evesuite.eve.jpa" transaction-type="RESOURCE_LOCAL">
+		
+		<mapping-file>META-INF/orm.xml</mapping-file>
+		
+		<class>eu.evesuite.eve.jpa.AgtAgentType</class>
+		<class>eu.evesuite.eve.jpa.AgtAgent</class>
+		<class>eu.evesuite.eve.jpa.AgtConfig</class>
+		<class>eu.evesuite.eve.jpa.AgtConfigPK</class>
+		<class>eu.evesuite.eve.jpa.AgtResearchAgent</class>
+		<class>eu.evesuite.eve.jpa.AgtResearchAgentPK</class>
+		<class>eu.evesuite.eve.jpa.ChrAncestry</class>
+		<class>eu.evesuite.eve.jpa.ChrAttribute</class>
+		<class>eu.evesuite.eve.jpa.ChrBloodline</class>
+		<class>eu.evesuite.eve.jpa.ChrFaction</class>
+		<class>eu.evesuite.eve.jpa.ChrRace</class>
+		<class>eu.evesuite.eve.jpa.CrpActivity</class>
+		<class>eu.evesuite.eve.jpa.CrpNPCCorporationDivision</class>
+		<class>eu.evesuite.eve.jpa.CrpNPCCorporationDivisionPK</class>
+		<class>eu.evesuite.eve.jpa.CrpNPCCorporationResearchField</class>
+		<class>eu.evesuite.eve.jpa.CrpNPCCorporationResearchFieldPK</class>
+		<class>eu.evesuite.eve.jpa.CrpNPCCorporationTrade</class>
+		<class>eu.evesuite.eve.jpa.CrpNPCCorporationTradePK</class>
+		<class>eu.evesuite.eve.jpa.CrpNPCCorporation</class>
+		<class>eu.evesuite.eve.jpa.CrpNPCDivision</class>
+		<class>eu.evesuite.eve.jpa.CrtCategory</class>
+		<class>eu.evesuite.eve.jpa.CrtCertificate</class>
+		<class>eu.evesuite.eve.jpa.CrtClass</class>
+		<class>eu.evesuite.eve.jpa.CrtRecommendation</class>
+		<class>eu.evesuite.eve.jpa.CrtRelationship</class>
+		<class>eu.evesuite.eve.jpa.DgmAttributeCategory</class>
+		<class>eu.evesuite.eve.jpa.DgmAttributeType</class>
+		<class>eu.evesuite.eve.jpa.DgmEffect</class>
+		<class>eu.evesuite.eve.jpa.DgmTypeAttribute</class>
+		<class>eu.evesuite.eve.jpa.DgmTypeAttributePK</class>
+		<class>eu.evesuite.eve.jpa.DgmTypeEffect</class>
+		<class>eu.evesuite.eve.jpa.DgmTypeEffectPK</class>
+		<class>eu.evesuite.eve.jpa.EveGraphic</class>
+		<class>eu.evesuite.eve.jpa.EveIcon</class>
+		<class>eu.evesuite.eve.jpa.EveName</class>
+		<class>eu.evesuite.eve.jpa.EveUnit</class>
+		<class>eu.evesuite.eve.jpa.InvBlueprintType</class>
+		<class>eu.evesuite.eve.jpa.InvCategory</class>
+		<class>eu.evesuite.eve.jpa.InvContrabandType</class>
+		<class>eu.evesuite.eve.jpa.InvContrabandTypePK</class>
+		<class>eu.evesuite.eve.jpa.InvControlTowerResourcePurpos</class>
+		<class>eu.evesuite.eve.jpa.InvControlTowerResource</class>
+		<class>eu.evesuite.eve.jpa.InvControlTowerResourcePK</class>
+		<class>eu.evesuite.eve.jpa.InvFlag</class>
+		<class>eu.evesuite.eve.jpa.InvGroup</class>
+		<class>eu.evesuite.eve.jpa.InvMarketGroup</class>
+		<class>eu.evesuite.eve.jpa.InvMetaGroup</class>
+		<class>eu.evesuite.eve.jpa.InvMetaType</class>
+		<class>eu.evesuite.eve.jpa.InvTypeMaterial</class>
+		<class>eu.evesuite.eve.jpa.InvTypeMaterialPK</class>
+		<class>eu.evesuite.eve.jpa.InvTypeReaction</class>
+		<class>eu.evesuite.eve.jpa.InvTypeReactionPK</class>
+		<class>eu.evesuite.eve.jpa.InvType</class>
+		<class>eu.evesuite.eve.jpa.MapCelestialStatistic</class>
+		<class>eu.evesuite.eve.jpa.MapConstellationJump</class>
+		<class>eu.evesuite.eve.jpa.MapConstellationJumpPK</class>
+		<class>eu.evesuite.eve.jpa.MapConstellation</class>
+		<class>eu.evesuite.eve.jpa.MapDenormalize</class>
+		<class>eu.evesuite.eve.jpa.MapJump</class>
+		<class>eu.evesuite.eve.jpa.MapLandmark</class>
+		<class>eu.evesuite.eve.jpa.MapLocationScene</class>
+		<class>eu.evesuite.eve.jpa.MapLocationWormholeClass</class>
+		<class>eu.evesuite.eve.jpa.MapRegionJump</class>
+		<class>eu.evesuite.eve.jpa.MapRegionJumpPK</class>
+		<class>eu.evesuite.eve.jpa.MapRegion</class>
+		<class>eu.evesuite.eve.jpa.MapSolarSystemJump</class>
+		<class>eu.evesuite.eve.jpa.MapSolarSystemJumpPK</class>
+		<class>eu.evesuite.eve.jpa.MapSolarSystem</class>
+		<class>eu.evesuite.eve.jpa.MapUniverse</class>
+		<class>eu.evesuite.eve.jpa.PlanetSchematic</class>
+		<class>eu.evesuite.eve.jpa.PlanetSchematicsPinMap</class>
+		<class>eu.evesuite.eve.jpa.PlanetSchematicsPinMapPK</class>
+		<class>eu.evesuite.eve.jpa.PlanetSchematicsTypeMap</class>
+		<class>eu.evesuite.eve.jpa.PlanetSchematicsTypeMapPK</class>
+		<class>eu.evesuite.eve.jpa.RamActivity</class>
+		<class>eu.evesuite.eve.jpa.RamAssemblyLineStation</class>
+		<class>eu.evesuite.eve.jpa.RamAssemblyLineStationPK</class>
+		<class>eu.evesuite.eve.jpa.RamAssemblyLineTypeDetailPerCategory</class>
+		<class>eu.evesuite.eve.jpa.RamAssemblyLineTypeDetailPerCategoryPK</class>
+		<class>eu.evesuite.eve.jpa.RamAssemblyLineTypeDetailPerGroup</class>
+		<class>eu.evesuite.eve.jpa.RamAssemblyLineTypeDetailPerGroupPK</class>
+		<class>eu.evesuite.eve.jpa.RamAssemblyLineType</class>
+		<class>eu.evesuite.eve.jpa.RamAssemblyLine</class>
+		<class>eu.evesuite.eve.jpa.RamInstallationTypeContent</class>
+		<class>eu.evesuite.eve.jpa.RamInstallationTypeContentPK</class>
+		<class>eu.evesuite.eve.jpa.RamTypeRequirement</class>
+		<class>eu.evesuite.eve.jpa.RamTypeRequirementPK</class>
+		<class>eu.evesuite.eve.jpa.StaOperationService</class>
+		<class>eu.evesuite.eve.jpa.StaOperationServicePK</class>
+		<class>eu.evesuite.eve.jpa.StaOperation</class>
+		<class>eu.evesuite.eve.jpa.StaService</class>
+		<class>eu.evesuite.eve.jpa.StaStationType</class>
+		<class>eu.evesuite.eve.jpa.StaStation</class>
+		<class>eu.evesuite.eve.jpa.TrnTranslationColumn</class>
+		<class>eu.evesuite.eve.jpa.TrnTranslation</class>
+		<class>eu.evesuite.eve.jpa.TrnTranslationPK</class>
+		
+		<exclude-unlisted-classes>false</exclude-unlisted-classes>
+		
+		<properties>
+			
+		</properties>		
+		
+	</persistence-unit>
+</persistence>

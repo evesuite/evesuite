@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: EVE Suite EVE UI
+Bundle-SymbolicName: eu.evesuite.eve.ui; singleton:=true
+Bundle-Version: 0.0.1.qualifier
+Bundle-Activator: eu.evesuite.eve.ui.Activator
+Bundle-Vendor: EVE Suite <evesuite@googlemail.com>
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ eu.evesuite.eve;bundle-version="0.0.1",
+ org.eclipse.ui.forms;bundle-version="3.5.2",
+ org.eclipse.zest.core;bundle-version="1.2.0",
+ org.eclipse.zest.layouts;bundle-version="1.1.0"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-ActivationPolicy: lazy
