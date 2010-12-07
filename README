@@ -1,0 +1,26 @@
+EVE Online Suite
+
+ - written in JAVA
+ - based on Eclipse
+
+Installting development environment:
+ 
+  Help -> Install New Software -> Work with: -- All Available Sites --
+      
+      Collaboration
+          
+          [x] Eclipse EGit
+          [x] Eclipse JGit
+      
+      EclipseRT Target Platform Components
+          
+          [x] EclipseLink Target Components
+  
+  Visit: http://m2eclipse.sonatype.org/installing-m2eclipse.html
+      
+      Follow the instructions
+
+Building:
+
+    > mvn clean install
+    
