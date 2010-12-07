@@ -4,7 +4,7 @@ Service-Component: OSGI-INF/component.xml
 Bundle-ManifestVersion: 2
 Bundle-Name: EVE Suite EVE
 Bundle-SymbolicName: eu.evesuite.eve
-Bundle-Version: 0.0.1
+Bundle-Version: 0.0.1.qualifier
 Bundle-Activator: eu.evesuite.eve.Activator
 Bundle-Vendor: EVE Suite <evesuite@googlemail.com>
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6

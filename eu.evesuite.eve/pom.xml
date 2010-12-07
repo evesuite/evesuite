@@ -8,6 +8,7 @@
 	<artifactId>eu.evesuite.eve</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>eclipse-plugin</packaging>
+	<name>EVE Suite EVE</name>
 	
 	<parent>
 		<groupId>eu.evesuite</groupId>

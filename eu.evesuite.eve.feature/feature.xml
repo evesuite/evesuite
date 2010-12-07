@@ -2,7 +2,7 @@
 <feature
       id="eu.evesuite.eve.feature"
       label="EVE Suite EVE Feature"
-      version="0.0.1"
+      version="0.0.1.qualifier"
       provider-name="EVE Suite &lt;evesuite@googlemail.com&gt;">
 
    <description url="http://github.com/evesuite/evesuite">
