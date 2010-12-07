@@ -26,16 +26,23 @@ public class ConnectHandler extends AbstractHandler {
 
 		EVEModelService service = Activator.getDefault().getModelService();
 
-		try {
+		if (service instanceof EVEModelService) {
 			
-			@SuppressWarnings("rawtypes")
-			Map properties = getConnectionProperties();
-
-			service.open(properties);
+			try {
+				
+				@SuppressWarnings("rawtypes")
+				Map properties = getConnectionProperties();
+	
+				service.open(properties);
+				
+			} catch (Exception e) {
+				IStatus status = new Status(Status.WARNING, Activator.PLUGIN_ID, e.getMessage(), e);
+				StatusManager.getManager().handle(status, StatusManager.LOG | StatusManager.BLOCK);			
+			}
 			
-		} catch (Exception e) {
-			IStatus status = new Status(Status.WARNING, Activator.PLUGIN_ID, e.getMessage(), e);
-			StatusManager.getManager().handle(status, StatusManager.LOG | StatusManager.BLOCK);			
+		} else {
+			IStatus status = new Status(Status.WARNING, Activator.PLUGIN_ID, "EVEModelService not available");
+			StatusManager.getManager().handle(status, StatusManager.LOG | StatusManager.BLOCK);
 		}
 
 		return null;

@@ -25,17 +25,37 @@
          point="org.eclipse.core.runtime.products">
       <product
             application="eu.evesuite.client.application"
-            name="EVE Suite Client">
+            name="EVE Suite">
          <property
                name="windowImages"
-               value="icons/icon_16.png,icons/icon_32.png">
+               value="icons/icon_16.png,icons/icon_32.png,icons/icon_64.png,icons/logo_128.png">
          </property>
 		<property
           name="aboutImage" 
           value="icons/logo_128.png"/>
       	<property
           name="aboutText" 
-          value="EVE Suite - http://github.com/evesuite/evesuite"/>         
+          value="EVE Suite - http://github.com/evesuite/evesuite"/>
+       <property
+             name="appName"
+             value="EVE Suite">
+       </property>
+       <property
+             name="startupForegroundColor"
+             value="000000">
+       </property>
+       <property
+             name="startupMessageRect"
+             value="7,252,445,20">
+       </property>
+       <property
+             name="startupProgressRect"
+             value="5,275,445,15">
+       </property>
+       <property
+             name="preferenceCustomization"
+             value="plugin_customization.ini">
+       </property>         
       </product>
    </extension>
    <extension
@@ -179,6 +199,18 @@
          <property
                name="appName"
                value="EVE Suite">
+         </property>
+      </product>
+   </extension>
+   <extension
+         id="evesuiteproduct"
+         point="org.eclipse.core.runtime.products">
+      <product
+            application="eu.evesuite.client.application"
+            name="EVE Suite Product">
+         <property
+               name="appName"
+               value="EVE Suite Product">
          </property>
       </product>
    </extension>
