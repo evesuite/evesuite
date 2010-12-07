@@ -12,8 +12,9 @@
 	<description>A collection of tools for EVE Online players</description>
 
 	<properties>
-		<tycho-version>0.11.0</tycho-version>
+		<tycho-version>0.10.0</tycho-version>
 		<tycho-groupid>org.sonatype.tycho</tycho-groupid>
+		<source-version>1.6</source-version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 
@@ -25,7 +26,7 @@
 	<developers>
 		<developer>
 			<id>greg</id>
-			<name>Gregor</name>
+			<name>Gregor Anders</name>
 			<email>evesuite@googlemail.com</email>
 			<roles>
 				<role>Project Manager</role>
@@ -46,8 +47,18 @@
 		<url>http://github.com/evesuite/evesuite</url>
 	</scm>
 	
+	<repositories>
+		<repository>
+			<id>helios</id>
+			<layout>p2</layout>
+			<url>http://download.eclipse.org/releases/helios</url>
+		</repository>
+	</repositories>
+	
 	<build>
-		<plugins>			
+		<plugins>		
+		
+			
 			<plugin>
 				<groupId>${tycho-groupid}</groupId>
 				<artifactId>tycho-maven-plugin</artifactId>
