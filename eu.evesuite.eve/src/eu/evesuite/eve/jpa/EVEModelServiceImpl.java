@@ -5,6 +5,7 @@ import java.util.Collection;
 import eu.evesuite.commons.jpa.AbstractModelManager;
 import eu.evesuite.commons.jpa.EVEModelService;
 import eu.evesuite.eve.bean.TechTree;
+import eu.evesuite.eve.bean.TechTreeNode;
 
 public class EVEModelServiceImpl extends AbstractModelManager implements
 		EVEModelService {
@@ -85,10 +86,11 @@ public class EVEModelServiceImpl extends AbstractModelManager implements
 	}
 	
 	
-	public void printTree(InvBlueprintType entity, String indent, double me) {
+	public Collection<TechTreeNode> getTechTree(InvBlueprintType entity, String indent, double me) {
 		
 		TechTree techTree = new TechTree();
-		techTree.getTree(entity, -4.0);
+		
+		return techTree.getTree(entity, -4.0);
 		
 		/*
 		Collection<InvTypeMaterial> materials = entity.getInvType().getMaterialInvTypes();
@@ -123,41 +125,5 @@ public class EVEModelServiceImpl extends AbstractModelManager implements
 		}		*/					
 	}
 	
-	public void printMaterials(Collection<InvTypeMaterial> materials, String indent, double me) {
-		
-		for (InvTypeMaterial invTypeMaterial : materials) {
-
-			double amount = (double) invTypeMaterial.getQuantity();
-
-			if (me < 0) {
-				amount = (amount + (double) (amount * (double) (10.0 / 100.0) * (double) ((double) (1 - (me)))));
-			} else {
-				amount = (amount + (double) (amount * (double) (10.0 / 100.0) * (double) ((1.0 / (double) (me+1)))));				
-			}			
-			
-			System.out.println(indent + invTypeMaterial.getInvType()
-					.getTypeName()
-					+ " - "
-					+ invTypeMaterial.getQuantity()
-					+ " - "
-					+ Math.round(amount));
-			
-			if (invTypeMaterial.getInvType().getInvBlueprintType() != null) {
-				this.printTree(invTypeMaterial.getInvType().getInvBlueprintType(), indent + "\t", 0.0);
-			}
-			
-			PlanetSchematicsTypeMap planetSchematicsTypeMap = invTypeMaterial.getInvType().getPlanetSchematicsTypeMap();
-			
-			if (planetSchematicsTypeMap instanceof PlanetSchematicsTypeMap) {
-				this.printPITree(planetSchematicsTypeMap.getPlanetSchematic(), indent + "\t");
-			}
-
-			InvTypeReaction invTypeReaction =  invTypeMaterial.getInvType().getInvTypeReaction();
-			
-			if (invTypeReaction instanceof InvTypeReaction) {
-				this.printMoonTree(invTypeReaction, indent + "\t");
-			}			
-			
-		}
-	}
+	
 }

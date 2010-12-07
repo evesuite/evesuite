@@ -15,11 +15,11 @@ import eu.evesuite.eve.jpa.RamTypeRequirement;
 
 public class TechTree {
 
-	public void getTree(InvBlueprintType entity, double me) {
+	public Collection<TechTreeNode> getTree(InvBlueprintType entity, double me) {
 
 		System.out.println(entity);
 
-		Collection<TechTreeNode> collection = getTreeNodes(entity);
+		Collection<TechTreeNode> collection = getTreeNodes(entity, null);
 
 		Collections.sort((List<TechTreeNode>) collection,
 				new Comparator<TechTreeNode>() {
@@ -50,7 +50,7 @@ public class TechTree {
 						*/
 		}		
 		
-		this.printTree(collection, "", me);		
+		return collection;		
 	}
 
 	protected void printTree(Collection<TechTreeNode> collection, String indent, double me) {
@@ -93,7 +93,7 @@ public class TechTree {
 					techTreeNode.setBluePrint(true);
 					techTreeNode.setApplyME(true);
 					
-					Collection<TechTreeNode> techTreeNodes = this.getTreeNodes(blueprint);
+					Collection<TechTreeNode> techTreeNodes = this.getTreeNodes(blueprint, techTreeNode);
 					
 					techTreeNode.addAll(techTreeNodes);
 				}
@@ -101,7 +101,7 @@ public class TechTree {
 		}
 	}
 	
-	public Collection<TechTreeNode> getBySchematic(PlanetSchematic schematic) {
+	public Collection<TechTreeNode> getBySchematic(PlanetSchematic schematic, TechTreeNode parent) {
 		
 		Collection<TechTreeNode> collection = new ArrayList<TechTreeNode>();
 		
@@ -119,11 +119,12 @@ public class TechTree {
 				node.setAmount((double) planetSchematicsTypeMap.getQuantity());
 				node.setInvType(planetSchematicsTypeMap.getInvType());
 				node.setRequirement(false);
+				node.setParent(parent);
 
 				collection.add(node);				
 
 				if (map instanceof PlanetSchematicsTypeMap) {		
-					node.addAll(this.getBySchematic(map.getPlanetSchematic()));
+					node.addAll(this.getBySchematic(map.getPlanetSchematic(), node));
 				}					
 			}
 		}
@@ -131,7 +132,7 @@ public class TechTree {
 		return collection;
 	}
 	
-	public Collection<TechTreeNode> getByReaction(InvTypeReaction reaction) {
+	public Collection<TechTreeNode> getByReaction(InvTypeReaction reaction, TechTreeNode parent) {
 		
 		Collection<TechTreeNode> collection = new ArrayList<TechTreeNode>();
 		
@@ -147,18 +148,19 @@ public class TechTree {
 			node.setAmount((double) invTypeReaction.getQuantity());
 			node.setInvType(invTypeReaction.getInvType());
 			node.setRequirement(false);
+			node.setParent(parent);
 
 			collection.add(node);				
 
 			if (itemReaction instanceof InvTypeReaction) {	
-				node.addAll(this.getByReaction(itemReaction.getInvTypeReaction()));
+				node.addAll(this.getByReaction(itemReaction.getInvTypeReaction(), node));
 			}					
 		}
 		
 		return collection;
 	}
 	
-	protected Collection<TechTreeNode> getTreeNodes(InvBlueprintType entity) {
+	protected Collection<TechTreeNode> getTreeNodes(InvBlueprintType entity, TechTreeNode parent) {
 
 		Collection<TechTreeNode> collection = new ArrayList<TechTreeNode>();
 
@@ -173,19 +175,20 @@ public class TechTree {
 			node.setAmount((double) invTypeMaterial.getQuantity());
 			node.setInvType(invTypeMaterial.getInvType());
 			node.setRequirement(false);
+			node.setParent(parent);
 
 			collection.add(node);	
 			
 			PlanetSchematicsTypeMap planetSchematicsTypeMap = node.getInvType().getPlanetSchematicsTypeMap();
 			
 			if (planetSchematicsTypeMap instanceof PlanetSchematicsTypeMap) {
-				node.addAll(this.getBySchematic(planetSchematicsTypeMap.getPlanetSchematic()));
+				node.addAll(this.getBySchematic(planetSchematicsTypeMap.getPlanetSchematic(), node));
 			}
 			
 			InvTypeReaction invTypeReaction =  node.getInvType().getInvTypeReaction();
 			
 			if (invTypeReaction instanceof InvTypeReaction) {
-				node.addAll(this.getByReaction(invTypeReaction));
+				node.addAll(this.getByReaction(invTypeReaction, node));
 			}			
 		}
 		
@@ -202,6 +205,7 @@ public class TechTree {
 				node.setAmount((double) ramTypeRequirement.getQuantity());
 				node.setInvType(ramTypeRequirement.getRequiredInvType());
 				node.setRequirement(true);
+				node.setParent(parent);
 
 				collection.add(node);
 			}
