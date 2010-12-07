@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
       id="eu.evesuite.eve.ui.feature"
-      label="EVE Suite EVE Feature"
+      label="EVE Suite EVE UI Feature"
       version="0.0.1.qualifier"
       provider-name="EVE Suite &lt;evesuite@googlemail.com&gt;">
 
-      <description url="http://github.com/evesuite/evesuite">
-      EVE Suite EVE Feature
-   		</description>
+   <description url="http://github.com/evesuite/evesuite">
+      EVE Suite EVE UI Feature
+   </description>
 
    <copyright url="http://www.gnu.org/licenses/gpl-2.0.html">
       GNU GENERAL PUBLIC LICENSE
