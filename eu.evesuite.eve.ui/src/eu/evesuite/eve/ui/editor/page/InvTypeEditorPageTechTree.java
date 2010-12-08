@@ -9,7 +9,6 @@ import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.layout.FillLayout;
-import org.eclipse.ui.IActionBars;
 import org.eclipse.ui.forms.IManagedForm;
 import org.eclipse.ui.forms.editor.FormEditor;
 import org.eclipse.ui.forms.editor.FormPage;
@@ -18,9 +17,7 @@ import org.eclipse.zest.core.viewers.AbstractZoomableViewer;
 import org.eclipse.zest.core.viewers.GraphViewer;
 import org.eclipse.zest.core.viewers.IGraphEntityContentProvider;
 import org.eclipse.zest.core.viewers.IZoomableWorkbenchPart;
-import org.eclipse.zest.core.viewers.ZoomContributionViewItem;
 import org.eclipse.zest.layouts.LayoutStyles;
-import org.eclipse.zest.layouts.algorithms.GridLayoutAlgorithm;
 import org.eclipse.zest.layouts.algorithms.RadialLayoutAlgorithm;
 
 import eu.evesuite.eve.bean.TechTreeNode;
@@ -68,6 +65,7 @@ public class InvTypeEditorPageTechTree extends FormPage implements IZoomableWork
 			
 			return new Object[0];
 		}
+		
 		
 		protected Collection<TechTreeNode> getNodeChildren(TechTreeNode node) {
 			
@@ -140,21 +138,17 @@ public class InvTypeEditorPageTechTree extends FormPage implements IZoomableWork
 		node.setAmount(1.0);
 		node.setChildren(techTree);
 		
-		for (TechTreeNode techTreeNode : techTree) {
-			techTreeNode.setParent(node);
-		}
-		
 		viewer = new GraphViewer(form.getBody(), SWT.BORDER);
 		viewer.setContentProvider(new ViewContentProvider());
 		viewer.setLabelProvider(new ViewLabelProvider());
-		viewer.getGraphControl().setPreferredSize(2000, 2000);
+		viewer.getGraphControl().setPreferredSize(7000, 7000);
 		viewer.applyLayout();
 		viewer.setLayoutAlgorithm(new RadialLayoutAlgorithm(
 				LayoutStyles.NO_LAYOUT_NODE_RESIZING), true);
 
-		viewer.setInput(node);
+		viewer.setInput(node);		
 		
-		ZoomContributionViewItem toolbarZoomContributionViewItem = new ZoomContributionViewItem(this);
+		//ZoomContributionViewItem toolbarZoomContributionViewItem = new ZoomContributionViewItem(this);
 		//IActionBars bars = managedForm.getgetViewSite().getActionBars();
 		//bars.getMenuManager().add(toolbarZoomContributionViewItem);
 	}

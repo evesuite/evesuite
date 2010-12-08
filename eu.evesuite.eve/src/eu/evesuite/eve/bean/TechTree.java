@@ -7,6 +7,7 @@ import java.util.Comparator;
 import java.util.List;
 
 import eu.evesuite.eve.jpa.InvBlueprintType;
+import eu.evesuite.eve.jpa.InvType;
 import eu.evesuite.eve.jpa.InvTypeMaterial;
 import eu.evesuite.eve.jpa.InvTypeReaction;
 import eu.evesuite.eve.jpa.PlanetSchematic;
@@ -17,8 +18,10 @@ public class TechTree {
 
 	public Collection<TechTreeNode> getTree(InvBlueprintType entity, double me) {
 
-		System.out.println(entity);
-
+		if (!(entity instanceof InvBlueprintType)) {
+			return new ArrayList<TechTreeNode>();
+		}
+		
 		Collection<TechTreeNode> collection = getTreeNodes(entity, null);
 
 		Collections.sort((List<TechTreeNode>) collection,
@@ -120,6 +123,7 @@ public class TechTree {
 				node.setInvType(planetSchematicsTypeMap.getInvType());
 				node.setRequirement(false);
 				node.setParent(parent);
+				node.setType(TechTreeNode.TYPES.PI);
 
 				collection.add(node);				
 
@@ -149,6 +153,8 @@ public class TechTree {
 			node.setInvType(invTypeReaction.getInvType());
 			node.setRequirement(false);
 			node.setParent(parent);
+			node.setType(TechTreeNode.TYPES.MOON);
+			parent.setType(TechTreeNode.TYPES.MOON);
 
 			collection.add(node);				
 
@@ -164,32 +170,40 @@ public class TechTree {
 
 		Collection<TechTreeNode> collection = new ArrayList<TechTreeNode>();
 
+		if (!(entity instanceof InvBlueprintType)) {
+			return collection;
+		}
+		
 		TechTreeNode node = null;
 
-		Collection<InvTypeMaterial> materials = entity.getInvType()
-				.getMaterialInvTypes();
-
-		for (InvTypeMaterial invTypeMaterial : materials) {
-
-			node = new TechTreeNode();
-			node.setAmount((double) invTypeMaterial.getQuantity());
-			node.setInvType(invTypeMaterial.getInvType());
-			node.setRequirement(false);
-			node.setParent(parent);
-
-			collection.add(node);	
+		if (entity.getInvType() instanceof InvType) {
 			
-			PlanetSchematicsTypeMap planetSchematicsTypeMap = node.getInvType().getPlanetSchematicsTypeMap();
-			
-			if (planetSchematicsTypeMap instanceof PlanetSchematicsTypeMap) {
-				node.addAll(this.getBySchematic(planetSchematicsTypeMap.getPlanetSchematic(), node));
+			Collection<InvTypeMaterial> materials = entity.getInvType()
+					.getMaterialInvTypes();
+	
+			for (InvTypeMaterial invTypeMaterial : materials) {
+	
+				node = new TechTreeNode();
+				node.setAmount((double) invTypeMaterial.getQuantity());
+				node.setInvType(invTypeMaterial.getInvType());
+				node.setRequirement(false);
+				node.setParent(parent);
+				node.setType(TechTreeNode.TYPES.INVTYPE);
+	
+				collection.add(node);	
+				
+				PlanetSchematicsTypeMap planetSchematicsTypeMap = node.getInvType().getPlanetSchematicsTypeMap();
+				
+				if (planetSchematicsTypeMap instanceof PlanetSchematicsTypeMap) {
+					node.addAll(this.getBySchematic(planetSchematicsTypeMap.getPlanetSchematic(), node));
+				}
+				
+				InvTypeReaction invTypeReaction =  node.getInvType().getInvTypeReaction();
+				
+				if (invTypeReaction instanceof InvTypeReaction) {
+					node.addAll(this.getByReaction(invTypeReaction, node));
+				}			
 			}
-			
-			InvTypeReaction invTypeReaction =  node.getInvType().getInvTypeReaction();
-			
-			if (invTypeReaction instanceof InvTypeReaction) {
-				node.addAll(this.getByReaction(invTypeReaction, node));
-			}			
 		}
 		
 		Collection<RamTypeRequirement> ramTypeRequirements = entity
@@ -206,6 +220,7 @@ public class TechTree {
 				node.setInvType(ramTypeRequirement.getRequiredInvType());
 				node.setRequirement(true);
 				node.setParent(parent);
+				node.setType(TechTreeNode.TYPES.INVTYPE);
 
 				collection.add(node);
 			}
