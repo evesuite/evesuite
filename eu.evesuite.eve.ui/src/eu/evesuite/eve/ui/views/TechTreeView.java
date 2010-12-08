@@ -59,44 +59,12 @@ public class TechTreeView extends ViewPart implements PropertyChangeListener {
 		viewer = new TreeViewer(parent, SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL);
 		viewer.setContentProvider(new DeferredTreeContentProvider());
         viewer.setLabelProvider(new WorkbenchLabelProvider());
+        
         getSite().setSelectionProvider(viewer);
 		
         IModelContentProvider contentProvider = new TechTreeContentProvider();
         
 		viewer.setInput(contentProvider);
-		
-		viewer.getTree().addSelectionListener(new SelectionAdapter() {
-
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-
-				ITreeSelection selections = (ITreeSelection)viewer.getSelection();
-				
-				if (selections instanceof ITreeSelection) {
-					
-					for (@SuppressWarnings("rawtypes")
-					Iterator iterator = selections.iterator(); iterator
-							.hasNext();) {
-						
-						Object selection = iterator.next();
-						
-						if (selection instanceof InvType) {
-							
-							InvType entity = (InvType)selection;
-							
-							try {
-								getSite().getPage().openEditor(new InvTypeEditorInput(entity), InvTypeEditor.ID);
-							} catch (PartInitException e1) {
-								IStatus status = new Status(Status.WARNING, Activator.PLUGIN_ID, e1.getMessage(), e1);
-								StatusManager.getManager().handle(status, StatusManager.LOG | StatusManager.BLOCK);								
-							}
-							
-						}
-					}
-				}
-				
-			}
-		});
 		
 		makeActions();
 	}

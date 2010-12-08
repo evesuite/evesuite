@@ -11,7 +11,6 @@ import org.eclipse.ui.statushandlers.StatusManager;
 
 import eu.evesuite.eve.ui.Activator;
 import eu.evesuite.eve.ui.views.BluePrintView;
-import eu.evesuite.eve.ui.views.MarketView;
 
 public class MarketViewHandler extends AbstractHandler {
 

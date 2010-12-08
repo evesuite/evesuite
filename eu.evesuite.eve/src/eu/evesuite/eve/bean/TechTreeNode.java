@@ -20,6 +20,8 @@ public class TechTreeNode {
 	
 	protected TechTreeNode parent;
 
+	protected int type;
+	
 	public TechTreeNode getParent() {
 		return parent;
 	}

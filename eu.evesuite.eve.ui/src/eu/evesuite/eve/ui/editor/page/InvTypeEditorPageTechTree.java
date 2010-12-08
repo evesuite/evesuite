@@ -146,7 +146,7 @@ public class InvTypeEditorPageTechTree extends FormPage implements IZoomableWork
 		viewer.setLayoutAlgorithm(new RadialLayoutAlgorithm(
 				LayoutStyles.NO_LAYOUT_NODE_RESIZING), true);
 
-		viewer.setInput(node);
+		viewer.setInput(node);		
 		
 		//ZoomContributionViewItem toolbarZoomContributionViewItem = new ZoomContributionViewItem(this);
 		//IActionBars bars = managedForm.getgetViewSite().getActionBars();

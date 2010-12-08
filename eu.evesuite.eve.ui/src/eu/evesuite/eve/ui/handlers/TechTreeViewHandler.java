@@ -10,6 +10,7 @@ import org.eclipse.ui.handlers.HandlerUtil;
 import org.eclipse.ui.statushandlers.StatusManager;
 
 import eu.evesuite.eve.ui.Activator;
+import eu.evesuite.eve.ui.views.TechTreeItemView;
 import eu.evesuite.eve.ui.views.TechTreeView;
 
 public class TechTreeViewHandler extends AbstractHandler {
@@ -20,6 +21,7 @@ public class TechTreeViewHandler extends AbstractHandler {
 
 		try {
 			window.getActivePage().showView(TechTreeView.ID);
+			window.getActivePage().showView(TechTreeItemView.ID);
 		} catch (Exception e) {
 			IStatus status = new Status(Status.WARNING, Activator.PLUGIN_ID, e.getMessage(), e);
 			StatusManager.getManager().handle(status, StatusManager.LOG | StatusManager.BLOCK);			

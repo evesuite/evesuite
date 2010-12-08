@@ -141,6 +141,13 @@
             id="eu.evesuite.eve.ui.views.TechTreeView"
             name="TechTree View">
       </view>
+      <view
+            category="eu.evesuite.eve.ui"
+            class="eu.evesuite.eve.ui.views.TechTreeItemView"
+            id="eu.evesuite.eve.ui.views.TechTreeItemView"
+            name="TechTreeItem View"
+            restorable="true">
+      </view>
    </extension>
    <extension
          point="org.eclipse.core.runtime.adapters">
