@@ -64,12 +64,24 @@ public class TechTreeItemView extends ViewPart implements IZoomableWorkbenchPart
 					techTree = service.getTechTree(blueprint, "", -4.0);			
 				}		
 				
-				TechTreeNode node = new TechTreeNode();
-				node.setInvType(entity);
-				node.setAmount(1.0);
-				node.setChildren(techTree);
+				if (ss.size() == 1) {
+					
+					TechTreeNode node = new TechTreeNode();
+					node.setInvType(entity);
+					node.setAmount(1.0);
+					node.setChildren(techTree);
+					
+					int count = node.countAll();
+					
+					if (count > 100) {
+						viewer.getGraphControl().setPreferredSize(count * 20, count * 20);
+					} else {
+						viewer.getGraphControl().setPreferredSize(-1,-1);
+					}
+					
+					viewer.setInput(node);
+				}
 				
-				viewer.setInput(ss.size() == 1 ? node : null);
 			}
 		}
 	};
@@ -116,19 +128,21 @@ public class TechTreeItemView extends ViewPart implements IZoomableWorkbenchPart
 
 			Collection<TechTreeNode> collection = new ArrayList<TechTreeNode>();
 
+			if (node.getType() == TechTreeNode.TYPES.MOON) {
+				return collection;
+			}
+			
 			collection.add(node);
 
-			if (level < 2) {
-				if (node.getChildren().size() > 0) {
-	
-					Collection<TechTreeNode> techTreeNodes = ((TechTreeNode) node)
-							.getChildren();
-	
-					for (TechTreeNode techTreeNode : techTreeNodes) {
-						collection.addAll(getNodeChildren(techTreeNode, level +1));
-					}
-	
+			if (node.getChildren().size() > 0) {
+
+				Collection<TechTreeNode> techTreeNodes = ((TechTreeNode) node)
+						.getChildren();
+
+				for (TechTreeNode techTreeNode : techTreeNodes) {
+					collection.addAll(getNodeChildren(techTreeNode, level +1));
 				}
+
 			}
 
 			return collection;
@@ -182,7 +196,6 @@ public class TechTreeItemView extends ViewPart implements IZoomableWorkbenchPart
 		viewer = new GraphViewer(parent, SWT.BORDER);
 		viewer.setContentProvider(new ViewContentProvider());
 		viewer.setLabelProvider(new ViewLabelProvider());
-		//viewer.getGraphControl().setPreferredSize(7000, 7000);
 		viewer.applyLayout();
 		viewer.setLayoutAlgorithm(new RadialLayoutAlgorithm(
 				LayoutStyles.NO_LAYOUT_NODE_RESIZING), true);

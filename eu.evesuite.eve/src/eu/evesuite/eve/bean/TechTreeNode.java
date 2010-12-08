@@ -20,8 +20,23 @@ public class TechTreeNode {
 	
 	protected TechTreeNode parent;
 
-	protected int type;
+	protected TYPES type;
 	
+	public enum TYPES {
+		BLUEPRINT,
+		INVTYPE,
+		PI,
+		MOON
+	}
+	
+	public TYPES getType() {
+		return type;
+	}
+
+	public void setType(TYPES type) {
+		this.type = type;
+	}
+
 	public TechTreeNode getParent() {
 		return parent;
 	}
@@ -145,5 +160,24 @@ public class TechTreeNode {
 		return children.hashCode();
 	}
 	
+	public int countAll() {
+		
+		return this.count(this);
+	}
 	
+	protected int count(TechTreeNode node) {
+		
+		int count = 1;
+		
+		if (node.getChildren().size() > 0) {
+			
+			Collection<TechTreeNode> collection = node.getChildren();
+			
+			for (TechTreeNode techTreeNode : collection) {
+				count += this.count(techTreeNode);
+			}
+		}
+		
+		return count;
+	}
 }
