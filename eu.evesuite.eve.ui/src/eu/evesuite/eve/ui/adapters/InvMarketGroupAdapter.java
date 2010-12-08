@@ -4,6 +4,9 @@ import java.io.File;
 import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 
 import org.eclipse.jface.resource.ImageDescriptor;
 
@@ -20,13 +23,33 @@ public class InvMarketGroupAdapter extends AbstractDeferredAdapter {
 		InvMarketGroup entity = (InvMarketGroup) o;
 		
 		Collection<InvMarketGroup> collection = entity.getInvMarketGroups();
+		
+		Collections.sort((List<InvMarketGroup>)collection, new Comparator<InvMarketGroup>() {
+
+			@Override
+			public int compare(InvMarketGroup o1, InvMarketGroup o2) {
+				return o1.getMarketGroupName().compareTo(o2.getMarketGroupName());
+			}
+			
+		});
+		
 		Collection<InvType> types = entity.getInvTypes();
+
+		Collections.sort((List<InvType>)types, new Comparator<InvType>() {
+
+			@Override
+			public int compare(InvType o1, InvType o2) {
+				return o1.getTypeName().compareTo(o2.getTypeName());
+			}
+			
+		});
 		
 		Collection<Object> list = new ArrayList<Object>();
 		list.addAll(collection);
 		list.addAll(types);
 		
 		if (list instanceof Collection) {
+								
 			return list.toArray(new Object[list.size()]);
 		}		
 

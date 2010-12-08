@@ -9,7 +9,8 @@ import javax.persistence.*;
 @Table(name="invMarketGroups")
 @NamedQueries({
 	@NamedQuery(name="InvMarketGroup.Parent", query = "SELECT a FROM InvMarketGroup a WHERE a.parentGroupID IS NULL"),
-	@NamedQuery(name="InvMarketGroup.BluePrint", query = "SELECT a FROM InvMarketGroup a WHERE a.parentGroupID=2")
+	@NamedQuery(name="InvMarketGroup.BluePrint", query = "SELECT a FROM InvMarketGroup a WHERE a.parentGroupID IS NULL"),
+	@NamedQuery(name="InvMarketGroup.TechTree", query = "SELECT a FROM InvMarketGroup a WHERE a.marketGroupID IN (4,9,11,157,475,477,955)")
 })
 public class InvMarketGroup implements Serializable {
 

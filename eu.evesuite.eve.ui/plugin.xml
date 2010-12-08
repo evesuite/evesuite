@@ -15,6 +15,11 @@
             name="Market">
       </command>
       <command
+            categoryId="eu.evesuite.eve.ui.commands.category"
+            id="eu.evesuite.eve.ui.commands.techTreeViewCommand"
+            name="TechTree">
+      </command>
+      <command
             name="Connect"
             categoryId="eu.evesuite.eve.ui.commands.category"
             id="eu.evesuite.eve.ui.commands.connectCommand">
@@ -39,6 +44,10 @@
             class="eu.evesuite.eve.ui.handlers.MarketViewHandler"
             commandId="eu.evesuite.eve.ui.commands.marketViewCommand">
       </handler>
+      <handler
+            class="eu.evesuite.eve.ui.handlers.TechTreeViewHandler"
+            commandId="eu.evesuite.eve.ui.commands.techTreeViewCommand">
+      </handler>
    </extension>
    <extension
          point="org.eclipse.ui.bindings">
@@ -52,12 +61,12 @@
                mnemonic="M"
                id="eu.evesuite.eve.ui.menus.mainMenu">
             <command
-                  commandId="eu.evesuite.eve.ui.commands.marketViewCommand"
-                  id="eu.evesuite.eve.ui.menus.marketViewCommand"
-                  mnemonic="M">
+                  commandId="eu.evesuite.eve.ui.commands.techTreeViewCommand"
+                  id="eu.evesuite.eve.ui.menus.techTreeViewCommand"
+                  mnemonic="T">
             </command>
             <separator
-                  name="eu.evesuite.eve.ui.separator2">
+                  name="eu.evesuite.eve.ui.separator3">
             </separator>
             <command
                   commandId="eu.evesuite.eve.ui.commands.connectCommand"
@@ -76,12 +85,12 @@
          <toolbar
                id="eu.evesuite.eve.ui.toolbars.mainToolbar">
             <command
-                  commandId="eu.evesuite.eve.ui.commands.marketViewCommand"
-                  id="eu.evesuite.eve.ui.toolbars.marketViewCommand"
+                  commandId="eu.evesuite.eve.ui.commands.techTreeViewCommand"
+                  id="eu.evesuite.eve.ui.toolbars.techTreeViewCommand"
                   mnemonic="M">
             </command>
             <separator
-                  name="eu.evesuite.eve.ui.separator3">
+                  name="eu.evesuite.eve.ui.separator4">
             </separator>
             <command
                   commandId="eu.evesuite.eve.ui.commands.connectCommand"
@@ -126,6 +135,19 @@
             id="eu.evesuite.eve.ui.views.BluePrintView"
             name="BluePrint View">
       </view>
+      <view
+            category="eu.evesuite.eve.ui"
+            class="eu.evesuite.eve.ui.views.TechTreeView"
+            id="eu.evesuite.eve.ui.views.TechTreeView"
+            name="TechTree View">
+      </view>
+      <view
+            category="eu.evesuite.eve.ui"
+            class="eu.evesuite.eve.ui.views.TechTreeItemView"
+            id="eu.evesuite.eve.ui.views.TechTreeItemView"
+            name="TechTreeItem View"
+            restorable="true">
+      </view>
    </extension>
    <extension
          point="org.eclipse.core.runtime.adapters">
@@ -165,6 +187,13 @@
       <factory
             adaptableType="eu.evesuite.eve.ui.providers.BluePrintContentProvider"
             class="eu.evesuite.eve.ui.adapters.BluePrintContentProviderAdapterFactory">
+         <adapter
+               type="org.eclipse.ui.progress.IDeferredWorkbenchAdapter">
+         </adapter>
+      </factory>
+      <factory
+            adaptableType="eu.evesuite.eve.ui.providers.TechTreeContentProvider"
+            class="eu.evesuite.eve.ui.adapters.TechTreeContentProviderAdapterFactory">
          <adapter
                type="org.eclipse.ui.progress.IDeferredWorkbenchAdapter">
          </adapter>
