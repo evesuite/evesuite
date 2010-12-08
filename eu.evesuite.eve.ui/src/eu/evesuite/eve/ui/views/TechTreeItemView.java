@@ -40,12 +40,15 @@ public class TechTreeItemView extends ViewPart implements IZoomableWorkbenchPart
 	private ISelectionListener listener = new ISelectionListener() {
 
 		public void selectionChanged(IWorkbenchPart part, ISelection sel) {
+			
 			if (!(sel instanceof IStructuredSelection))
 				return;
+			
 			IStructuredSelection ss = (IStructuredSelection) sel;
+			
 			Object o = ss.getFirstElement();
+
 			if (o instanceof InvType) {
-				System.out.println("ok");
 				
 				EVEModelServiceImpl service = (EVEModelServiceImpl) Activator.getDefault().getModelService();
 				
